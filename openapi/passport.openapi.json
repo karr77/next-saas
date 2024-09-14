@@ -1,0 +1,2341 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "passport",
+        "description": "",
+        "version": "1.0.0"
+    },
+    "tags": [
+        {
+            "name": "系统业务"
+        },
+        {
+            "name": "团队业务-内部接口"
+        },
+        {
+            "name": "账号业务"
+        },
+        {
+            "name": "团队业务"
+        },
+        {
+            "name": "登陆注册业务"
+        }
+    ],
+    "paths": {
+        "/passport/v1/system/add/auth": {
+            "get": {
+                "summary": "增加账号授权-rpa自动授权测试",
+                "deprecated": false,
+                "description": "",
+                "operationId": "addUsingGET",
+                "tags": [
+                    "系统业务"
+                ],
+                "parameters": [
+                    {
+                        "name": "account",
+                        "in": "query",
+                        "description": "account",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "JWT Token",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-TENANT-ID",
+                        "in": "header",
+                        "description": "租户ID",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "OK"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Unauthorized"
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Forbidden"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Not Found"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/passport/v1/tenant/internal/app/apply/points": {
+            "post": {
+                "summary": "团队-积分申请使用",
+                "deprecated": false,
+                "description": "",
+                "operationId": "getTenantApplyPointsUsingPOST",
+                "tags": [
+                    "团队业务-内部接口"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "JWT Token",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-TENANT-ID",
+                        "in": "header",
+                        "description": "租户ID",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TenantApplyPointsReq"
+                            },
+                            "example": ""
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/%E7%BB%93%E6%9E%9C%E9%9B%86%E5%B0%81%E8%A3%85%E6%A8%A1%E5%9E%8B%C2%ABboolean%C2%BB"
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "OK"
+                    },
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Created"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Unauthorized"
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Forbidden"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Not Found"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/passport/v1/user/profile/info": {
+            "get": {
+                "summary": "个人、所属团队信息",
+                "deprecated": false,
+                "description": "",
+                "operationId": "infoUsingGET",
+                "tags": [
+                    "账号业务"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "JWT Token",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-TENANT-ID",
+                        "in": "header",
+                        "description": "租户ID",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/%E7%BB%93%E6%9E%9C%E9%9B%86%E5%B0%81%E8%A3%85%E6%A8%A1%E5%9E%8B%C2%AB%E7%A7%9F%E6%88%B7%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E6%A8%A1%E5%9E%8B%C2%BB"
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "OK"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Unauthorized"
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Forbidden"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Not Found"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/passport/v1/tenant/add/member": {
+            "post": {
+                "summary": "团队-子账号添加",
+                "deprecated": false,
+                "description": "",
+                "operationId": "addMemberUsingPOST",
+                "tags": [
+                    "团队业务"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "JWT Token",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-TENANT-ID",
+                        "in": "header",
+                        "description": "租户ID",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TenantAddMemberReq"
+                            },
+                            "example": ""
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/%E7%BB%93%E6%9E%9C%E9%9B%86%E5%B0%81%E8%A3%85%E6%A8%A1%E5%9E%8B%C2%ABboolean%C2%BB"
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "OK"
+                    },
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Created"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Unauthorized"
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Forbidden"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Not Found"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/passport/v1/user/login": {
+            "get": {
+                "summary": "（内部使用）自定义登录接口",
+                "deprecated": false,
+                "description": "",
+                "operationId": "loginUsingGET",
+                "tags": [
+                    "登陆注册业务"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "JWT Token",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-TENANT-ID",
+                        "in": "header",
+                        "description": "租户ID",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "OK"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Unauthorized"
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Forbidden"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Not Found"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/passport/v1/tenant/base/info": {
+            "get": {
+                "summary": "团队-基本信息-内部使用",
+                "deprecated": false,
+                "description": "",
+                "operationId": "getAccountNumUsingGET",
+                "tags": [
+                    "团队业务"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "JWT Token",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-TENANT-ID",
+                        "in": "header",
+                        "description": "租户ID",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/%E7%BB%93%E6%9E%9C%E9%9B%86%E5%B0%81%E8%A3%85%E6%A8%A1%E5%9E%8B%C2%ABlong%C2%BB"
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "OK"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Unauthorized"
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Forbidden"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Not Found"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/passport/v1/tenant/internal/base/info": {
+            "get": {
+                "summary": "团队-基本信息-内部使用",
+                "deprecated": false,
+                "description": "",
+                "operationId": "getTenantBaseInfoUsingGET",
+                "tags": [
+                    "团队业务-内部接口"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "JWT Token",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-TENANT-ID",
+                        "in": "header",
+                        "description": "租户ID",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/%E7%BB%93%E6%9E%9C%E9%9B%86%E5%B0%81%E8%A3%85%E6%A8%A1%E5%9E%8B%C2%AB%E7%A7%9F%E6%88%B7%E7%94%A8%E6%88%B7%E5%86%85%E9%83%A8%E4%BF%A1%E6%81%AF%E6%A8%A1%E5%9E%8B%C2%BB"
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "OK"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Unauthorized"
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Forbidden"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Not Found"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/passport/v1/user/profile/update": {
+            "post": {
+                "summary": "个人信息修改",
+                "deprecated": false,
+                "description": "",
+                "operationId": "updateUsingPOST",
+                "tags": [
+                    "账号业务"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "JWT Token",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-TENANT-ID",
+                        "in": "header",
+                        "description": "租户ID",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserInfoUpdateReq"
+                            },
+                            "example": ""
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/%E7%BB%93%E6%9E%9C%E9%9B%86%E5%B0%81%E8%A3%85%E6%A8%A1%E5%9E%8B%C2%ABboolean%C2%BB"
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "OK"
+                    },
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Created"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Unauthorized"
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Forbidden"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Not Found"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/passport/v1/system/public/header/list": {
+            "post": {
+                "summary": "头像地址",
+                "deprecated": false,
+                "description": "",
+                "operationId": "headerImagesListUsingPOST",
+                "tags": [
+                    "系统业务"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "JWT Token",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-TENANT-ID",
+                        "in": "header",
+                        "description": "租户ID",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/%E7%BB%93%E6%9E%9C%E9%9B%86%E5%B0%81%E8%A3%85%E6%A8%A1%E5%9E%8B%C2%ABList%C2%ABstring%C2%BB%C2%BB"
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "OK"
+                    },
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Created"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Unauthorized"
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Forbidden"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Not Found"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/passport/v1/user/login/by/password": {
+            "post": {
+                "summary": "密码登陆",
+                "deprecated": false,
+                "description": "",
+                "operationId": "loginPwdUsingPOST",
+                "tags": [
+                    "登陆注册业务"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "JWT Token",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-TENANT-ID",
+                        "in": "header",
+                        "description": "租户ID",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserLoginPwdReq"
+                            },
+                            "example": ""
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/%E7%BB%93%E6%9E%9C%E9%9B%86%E5%B0%81%E8%A3%85%E6%A8%A1%E5%9E%8B%C2%AB%E7%A7%9F%E6%88%B7%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E6%A8%A1%E5%9E%8B%C2%BB"
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "OK"
+                    },
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Created"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Unauthorized"
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Forbidden"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Not Found"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/passport/v1/system/send/verify-code": {
+            "post": {
+                "summary": "发送验证码",
+                "deprecated": false,
+                "description": "",
+                "operationId": "sendSmsVerifyCodeUsingPOST",
+                "tags": [
+                    "系统业务"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "JWT Token",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-TENANT-ID",
+                        "in": "header",
+                        "description": "租户ID",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SystemVerifyCodeSendReq"
+                            },
+                            "example": ""
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/%E7%BB%93%E6%9E%9C%E9%9B%86%E5%B0%81%E8%A3%85%E6%A8%A1%E5%9E%8B%C2%AB%E5%8F%91%E9%80%81%E7%9F%AD%E4%BF%A1%E6%A8%A1%E5%9E%8B%E5%B0%81%E8%A3%85%C2%BB"
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "OK"
+                    },
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Created"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Unauthorized"
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Forbidden"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Not Found"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/passport/v1/tenant/del/member": {
+            "post": {
+                "summary": "团队-子账号删除",
+                "deprecated": false,
+                "description": "",
+                "operationId": "delMemberUsingPOST",
+                "tags": [
+                    "团队业务"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "JWT Token",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-TENANT-ID",
+                        "in": "header",
+                        "description": "租户ID",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TenantDelMemberReq"
+                            },
+                            "example": ""
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/%E7%BB%93%E6%9E%9C%E9%9B%86%E5%B0%81%E8%A3%85%E6%A8%A1%E5%9E%8B%C2%ABboolean%C2%BB"
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "OK"
+                    },
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Created"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Unauthorized"
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Forbidden"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Not Found"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/passport/v1/user/login/by/verify-code": {
+            "post": {
+                "summary": "验证码登陆",
+                "deprecated": false,
+                "description": "",
+                "operationId": "loginVerifyCodeUsingPOST",
+                "tags": [
+                    "登陆注册业务"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "JWT Token",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-TENANT-ID",
+                        "in": "header",
+                        "description": "租户ID",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserLoginVerifyCodeReq"
+                            },
+                            "example": ""
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/%E7%BB%93%E6%9E%9C%E9%9B%86%E5%B0%81%E8%A3%85%E6%A8%A1%E5%9E%8B%C2%AB%E7%A7%9F%E6%88%B7%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E6%A8%A1%E5%9E%8B%C2%BB"
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "OK"
+                    },
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Created"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Unauthorized"
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Forbidden"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Not Found"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/passport/v1/tenant/update": {
+            "post": {
+                "summary": "团队-信息修改",
+                "deprecated": false,
+                "description": "",
+                "operationId": "updateUsingPOST_1",
+                "tags": [
+                    "团队业务"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "JWT Token",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-TENANT-ID",
+                        "in": "header",
+                        "description": "租户ID",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TenantUpdateReq"
+                            },
+                            "example": ""
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/%E7%BB%93%E6%9E%9C%E9%9B%86%E5%B0%81%E8%A3%85%E6%A8%A1%E5%9E%8B%C2%ABboolean%C2%BB"
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "OK"
+                    },
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Created"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Unauthorized"
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Forbidden"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Not Found"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/passport/v1/user/register": {
+            "post": {
+                "summary": "注册",
+                "deprecated": false,
+                "description": "",
+                "operationId": "registerUsingPOST",
+                "tags": [
+                    "登陆注册业务"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "JWT Token",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-TENANT-ID",
+                        "in": "header",
+                        "description": "租户ID",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserRegisterReq"
+                            },
+                            "example": ""
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/%E7%BB%93%E6%9E%9C%E9%9B%86%E5%B0%81%E8%A3%85%E6%A8%A1%E5%9E%8B%C2%ABboolean%C2%BB"
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "OK"
+                    },
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Created"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Unauthorized"
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Forbidden"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Not Found"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/passport/v1/tenant/user/list": {
+            "get": {
+                "summary": "团队-账号列表",
+                "deprecated": false,
+                "description": "",
+                "operationId": "tenantUserListUsingGET",
+                "tags": [
+                    "团队业务"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "JWT Token",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-TENANT-ID",
+                        "in": "header",
+                        "description": "租户ID",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/%E7%BB%93%E6%9E%9C%E9%9B%86%E5%B0%81%E8%A3%85%E6%A8%A1%E5%9E%8B%C2%ABList%C2%AB%E7%A7%9F%E6%88%B7%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E6%A8%A1%E5%9E%8B%C2%BB%C2%BB"
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "OK"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Unauthorized"
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Forbidden"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Not Found"
+                    }
+                },
+                "security": []
+            }
+        },
+        "/passport/v1/user/resetting/password": {
+            "post": {
+                "summary": "重置密码",
+                "deprecated": false,
+                "description": "",
+                "operationId": "resettingPasswordUsingPOST",
+                "tags": [
+                    "登陆注册业务"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "JWT Token",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "X-TENANT-ID",
+                        "in": "header",
+                        "description": "租户ID",
+                        "required": false,
+                        "example": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserRestPwdReq"
+                            },
+                            "example": ""
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/%E7%BB%93%E6%9E%9C%E9%9B%86%E5%B0%81%E8%A3%85%E6%A8%A1%E5%9E%8B%C2%ABboolean%C2%BB"
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "OK"
+                    },
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Created"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Unauthorized"
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Forbidden"
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {}
+                                }
+                            }
+                        },
+                        "headers": {},
+                        "x-apifox-name": "Not Found"
+                    }
+                },
+                "security": []
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "结果集封装模型«租户用户内部信息模型»": {
+                "title": "结果集封装模型«租户用户内部信息模型»",
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/%E7%A7%9F%E6%88%B7%E7%94%A8%E6%88%B7%E5%86%85%E9%83%A8%E4%BF%A1%E6%81%AF%E6%A8%A1%E5%9E%8B"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "trace_id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "结果集封装模型«long»": {
+                "title": "结果集封装模型«long»",
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "data": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "trace_id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "结果集封装模型«租户用户信息模型»": {
+                "title": "结果集封装模型«租户用户信息模型»",
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/%E7%A7%9F%E6%88%B7%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E6%A8%A1%E5%9E%8B"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "trace_id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "结果集封装模型«发送短信模型封装»": {
+                "title": "结果集封装模型«发送短信模型封装»",
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/%E5%8F%91%E9%80%81%E7%9F%AD%E4%BF%A1%E6%A8%A1%E5%9E%8B%E5%B0%81%E8%A3%85"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "trace_id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "结果集封装模型«boolean»": {
+                "title": "结果集封装模型«boolean»",
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "data": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "trace_id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "租户用户内部信息模型": {
+                "title": "租户用户内部信息模型",
+                "type": "object",
+                "properties": {
+                    "account_num": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "app_code": {
+                        "type": "string"
+                    },
+                    "app_id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "app_logo": {
+                        "type": "string"
+                    },
+                    "app_name": {
+                        "type": "string"
+                    },
+                    "app_url": {
+                        "type": "string"
+                    },
+                    "company_address": {
+                        "type": "string"
+                    },
+                    "company_name": {
+                        "type": "string"
+                    },
+                    "create_tenant_account_name": {
+                        "type": "string"
+                    },
+                    "logo_address": {
+                        "type": "string"
+                    },
+                    "points": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "tenant_create_time": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "tenant_id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "valid_end_time": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "valid_start_time": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "结果集封装模型«List«租户用户信息模型»»": {
+                "title": "结果集封装模型«List«租户用户信息模型»»",
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/%E7%A7%9F%E6%88%B7%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E6%A8%A1%E5%9E%8B"
+                        }
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "trace_id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "结果集封装模型«List«string»»": {
+                "title": "结果集封装模型«List«string»»",
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "trace_id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "View": {
+                "type": "object",
+                "properties": {
+                    "contentType": {
+                        "type": "string"
+                    }
+                },
+                "title": "View"
+            },
+            "租户用户信息模型": {
+                "title": "租户用户信息模型",
+                "type": "object",
+                "properties": {
+                    "account_name": {
+                        "type": "string"
+                    },
+                    "account_num": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "active_status": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "address": {
+                        "type": "string"
+                    },
+                    "avatar_address": {
+                        "type": "string"
+                    },
+                    "company_address": {
+                        "type": "string"
+                    },
+                    "company_name": {
+                        "type": "string"
+                    },
+                    "create_tenant_account_name": {
+                        "type": "string"
+                    },
+                    "create_time": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "logo_address": {
+                        "type": "string"
+                    },
+                    "mobile": {
+                        "type": "string"
+                    },
+                    "nickname": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string"
+                    },
+                    "tenant_create_time": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "tenant_id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "update_time": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "发送短信模型封装": {
+                "title": "发送短信模型封装",
+                "type": "object",
+                "properties": {
+                    "verify_id": {
+                        "type": "integer",
+                        "description": "获取验证码返回唯一id",
+                        "format": "int64"
+                    }
+                }
+            },
+            "UserRestPwdReq": {
+                "title": "UserRestPwdReq",
+                "required": [
+                    "password",
+                    "type",
+                    "verify_code",
+                    "verify_id"
+                ],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "邮箱"
+                    },
+                    "mobile": {
+                        "type": "string",
+                        "description": "手机号"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "密码"
+                    },
+                    "type": {
+                        "type": "integer",
+                        "description": "类型(1:手机 2:邮箱)",
+                        "format": "int32"
+                    },
+                    "verify_code": {
+                        "type": "string",
+                        "description": "验证码"
+                    },
+                    "verify_id": {
+                        "type": "integer",
+                        "description": "校验验证码返回的verifyId",
+                        "format": "int64"
+                    }
+                }
+            },
+            "UserRegisterReq": {
+                "title": "UserRegisterReq",
+                "required": [
+                    "password",
+                    "type",
+                    "verify_code",
+                    "verify_id"
+                ],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "邮箱"
+                    },
+                    "mobile": {
+                        "type": "string",
+                        "description": "手机号"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "密码"
+                    },
+                    "type": {
+                        "type": "integer",
+                        "description": "类型(1:手机 2:邮箱)",
+                        "format": "int32"
+                    },
+                    "verify_code": {
+                        "type": "string",
+                        "description": "验证码"
+                    },
+                    "verify_id": {
+                        "type": "integer",
+                        "description": "校验验证码返回的verifyId",
+                        "format": "int64"
+                    }
+                }
+            },
+            "UserLoginVerifyCodeReq": {
+                "title": "UserLoginVerifyCodeReq",
+                "required": [
+                    "type",
+                    "verify_code",
+                    "verify_id"
+                ],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "邮箱"
+                    },
+                    "mobile": {
+                        "type": "string",
+                        "description": "手机号"
+                    },
+                    "type": {
+                        "type": "integer",
+                        "description": "类型(1:手机 2:邮箱)",
+                        "format": "int32"
+                    },
+                    "verify_code": {
+                        "type": "string",
+                        "description": "验证码"
+                    },
+                    "verify_id": {
+                        "type": "integer",
+                        "description": "校验验证码返回的verifyId",
+                        "format": "int64"
+                    }
+                }
+            },
+            "UserLoginPwdReq": {
+                "title": "UserLoginPwdReq",
+                "required": [
+                    "password",
+                    "type"
+                ],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "邮箱"
+                    },
+                    "mobile": {
+                        "type": "string",
+                        "description": "手机号"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "密码"
+                    },
+                    "type": {
+                        "type": "integer",
+                        "description": "类型(1:手机 2:邮箱)",
+                        "format": "int32"
+                    }
+                }
+            },
+            "UserInfoUpdateReq": {
+                "title": "UserInfoUpdateReq",
+                "type": "object",
+                "properties": {
+                    "avatar_address": {
+                        "type": "string",
+                        "description": "地址"
+                    },
+                    "nickname": {
+                        "type": "string",
+                        "description": "昵称"
+                    }
+                }
+            },
+            "TenantUpdateReq": {
+                "title": "TenantUpdateReq",
+                "type": "object",
+                "properties": {
+                    "company_address": {
+                        "type": "string",
+                        "description": "企业地址"
+                    },
+                    "company_name": {
+                        "type": "string",
+                        "description": "公司名称"
+                    },
+                    "logo_address": {
+                        "type": "string",
+                        "description": "企业logo"
+                    },
+                    "tenant_id": {
+                        "type": "integer",
+                        "description": "租户id",
+                        "format": "int64"
+                    }
+                }
+            },
+            "TenantApplyPointsReq": {
+                "title": "TenantApplyPointsReq",
+                "required": [
+                    "points",
+                    "points_consumption_type"
+                ],
+                "type": "object",
+                "properties": {
+                    "points": {
+                        "type": "number",
+                        "description": "积分消耗值",
+                        "format": "double"
+                    },
+                    "points_consumption_type": {
+                        "type": "string",
+                        "description": "积分消耗值业务类型"
+                    }
+                }
+            },
+            "TenantDelMemberReq": {
+                "title": "TenantDelMemberReq",
+                "required": [
+                    "user_ids"
+                ],
+                "type": "object",
+                "properties": {
+                    "user_ids": {
+                        "type": "array",
+                        "description": "账号id",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                }
+            },
+            "TenantAddMemberReq": {
+                "title": "TenantAddMemberReq",
+                "required": [
+                    "password",
+                    "type"
+                ],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "邮箱"
+                    },
+                    "mobile": {
+                        "type": "string",
+                        "description": "手机号"
+                    },
+                    "nickname": {
+                        "type": "string",
+                        "description": "昵称"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "密码"
+                    },
+                    "type": {
+                        "type": "integer",
+                        "description": "类型(1:手机 2:邮箱)",
+                        "format": "int32"
+                    }
+                }
+            },
+            "ModelAndView": {
+                "type": "object",
+                "properties": {
+                    "empty": {
+                        "type": "boolean"
+                    },
+                    "model": {
+                        "type": "object",
+                        "properties": {}
+                    },
+                    "modelMap": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "object"
+                        },
+                        "properties": {}
+                    },
+                    "reference": {
+                        "type": "boolean"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "ACCEPTED",
+                            "ALREADY_REPORTED",
+                            "BAD_GATEWAY",
+                            "BAD_REQUEST",
+                            "BANDWIDTH_LIMIT_EXCEEDED",
+                            "CHECKPOINT",
+                            "CONFLICT",
+                            "CONTINUE",
+                            "CREATED",
+                            "DESTINATION_LOCKED",
+                            "EXPECTATION_FAILED",
+                            "FAILED_DEPENDENCY",
+                            "FORBIDDEN",
+                            "FOUND",
+                            "GATEWAY_TIMEOUT",
+                            "GONE",
+                            "HTTP_VERSION_NOT_SUPPORTED",
+                            "IM_USED",
+                            "INSUFFICIENT_SPACE_ON_RESOURCE",
+                            "INSUFFICIENT_STORAGE",
+                            "INTERNAL_SERVER_ERROR",
+                            "I_AM_A_TEAPOT",
+                            "LENGTH_REQUIRED",
+                            "LOCKED",
+                            "LOOP_DETECTED",
+                            "METHOD_FAILURE",
+                            "METHOD_NOT_ALLOWED",
+                            "MOVED_PERMANENTLY",
+                            "MOVED_TEMPORARILY",
+                            "MULTIPLE_CHOICES",
+                            "MULTI_STATUS",
+                            "NETWORK_AUTHENTICATION_REQUIRED",
+                            "NON_AUTHORITATIVE_INFORMATION",
+                            "NOT_ACCEPTABLE",
+                            "NOT_EXTENDED",
+                            "NOT_FOUND",
+                            "NOT_IMPLEMENTED",
+                            "NOT_MODIFIED",
+                            "NO_CONTENT",
+                            "OK",
+                            "PARTIAL_CONTENT",
+                            "PAYLOAD_TOO_LARGE",
+                            "PAYMENT_REQUIRED",
+                            "PERMANENT_REDIRECT",
+                            "PRECONDITION_FAILED",
+                            "PRECONDITION_REQUIRED",
+                            "PROCESSING",
+                            "PROXY_AUTHENTICATION_REQUIRED",
+                            "REQUESTED_RANGE_NOT_SATISFIABLE",
+                            "REQUEST_ENTITY_TOO_LARGE",
+                            "REQUEST_HEADER_FIELDS_TOO_LARGE",
+                            "REQUEST_TIMEOUT",
+                            "REQUEST_URI_TOO_LONG",
+                            "RESET_CONTENT",
+                            "SEE_OTHER",
+                            "SERVICE_UNAVAILABLE",
+                            "SWITCHING_PROTOCOLS",
+                            "TEMPORARY_REDIRECT",
+                            "TOO_EARLY",
+                            "TOO_MANY_REQUESTS",
+                            "UNAUTHORIZED",
+                            "UNAVAILABLE_FOR_LEGAL_REASONS",
+                            "UNPROCESSABLE_ENTITY",
+                            "UNSUPPORTED_MEDIA_TYPE",
+                            "UPGRADE_REQUIRED",
+                            "URI_TOO_LONG",
+                            "USE_PROXY",
+                            "VARIANT_ALSO_NEGOTIATES"
+                        ]
+                    },
+                    "view": {
+                        "$ref": "#/components/schemas/View"
+                    },
+                    "viewName": {
+                        "type": "string"
+                    }
+                },
+                "title": "ModelAndView"
+            },
+            "SystemVerifyCodeSendReq": {
+                "title": "SystemVerifyCodeSendReq",
+                "required": [
+                    "scene",
+                    "type"
+                ],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "邮箱"
+                    },
+                    "mobile": {
+                        "type": "string",
+                        "description": "手机号"
+                    },
+                    "scene": {
+                        "type": "integer",
+                        "description": "场景：1：注册 2：快捷登录 3:忘记密码 。。。。。其他的业务场景往上推",
+                        "format": "int32"
+                    },
+                    "type": {
+                        "type": "integer",
+                        "description": "类型(1:手机 2:邮箱)",
+                        "format": "int32"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {}
+    },
+    "servers": []
+}
